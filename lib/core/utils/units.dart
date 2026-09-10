@@ -17,5 +17,7 @@ class Units {
   static double getFontSize({
     required double fontSize,
     required BuildContext context,
-  }) => (MediaQuery.of(context).size.height * fontSize) / figmaWidth;
+  }) => (MediaQuery.of(context).size.width * fontSize) / figmaWidth;
+
+
 }
