@@ -19,5 +19,9 @@ class Units {
     required BuildContext context,
   }) => (MediaQuery.of(context).size.width * fontSize) / figmaWidth;
 
-
+  static double getPercentHeight({
+    required double percentHeight,
+    required BuildContext context,
+  }) =>
+      (MediaQuery.of(context).size.height * percentHeight) / 100;
 }

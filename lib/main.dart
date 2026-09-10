@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextask/nextask.dart';
 
-void main(){
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(Nextask());
 }

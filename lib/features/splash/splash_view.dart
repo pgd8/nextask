@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nextask/core/navigation/routes.dart';
 import 'package:nextask/core/styles/assets_manager.dart';
 import 'package:nextask/core/styles/colors_manager.dart';
-import 'package:nextask/core/styles/text_styles.dart';
 import 'package:nextask/core/utils/units.dart';
-import 'package:nextask/features/login/login_view.dart';
 
 class SplashView extends StatefulWidget {
-  static const routeName = '/splash-view';
   const SplashView({super.key});
 
   @override
@@ -15,9 +14,10 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+
   @override
   void initState() {
-    routeToLoginView();
+    routeToOnboarding();
     super.initState();
   }
 
@@ -26,27 +26,18 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: ColorsManager.whiteColor,
       body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            SvgPicture.asset(
-              AssetsManager.appLogoIcon,
-              height: Units.getHeight(widgetHeight: 100, context: context),
-              width: Units.getWidth(widgetWidth: 100, context: context),
-            ),
-            Text('NexTask', style: TextStyles.textStyleWhiteR36(context)),
-          ],
+        child: SvgPicture.asset(
+          AssetsManager.appLogoIcon,
+          height: Units.getHeight(widgetHeight: 200, context: context),
+          width: Units.getWidth(widgetWidth: 200, context: context),
         ),
       ),
     );
   }
 
-  void routeToLoginView() {
+  void routeToOnboarding() {
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => LoginView()),
-      );
+      context.go(Routes.kOnboardingView);
     });
   }
 }

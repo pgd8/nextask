@@ -8,4 +8,10 @@ class TextStyles {
     color: ColorsManager.whiteColor,
     fontSize: Units.getFontSize(fontSize: 36, context: context),
   );
+
+    static TextStyle textStyleWhiteM20q(BuildContext context)=>  TextStyle(
+    color: ColorsManager.whiteColor,
+    fontWeight: FontWeight.w500,
+    fontSize: Units.getFontSize(fontSize: 20, context: context),
+  );
 }
