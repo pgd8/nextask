@@ -21,7 +21,7 @@ class OnboardingTab extends StatelessWidget {
           width: Units.getWidth(widgetWidth: 297, context: context),
           height: Units.getHeight(widgetHeight: 281, context: context),
         ),
-        Text(description, style: TextStyles.textStyleWhiteM20q(context),textAlign: .center,),
+        Text(description, style: TextStyles.textStyleWhiteM20(context),textAlign: .center,),
       ],
     );
   }

@@ -22,6 +22,20 @@ class Units {
   static double getPercentHeight({
     required double percentHeight,
     required BuildContext context,
-  }) =>
-      (MediaQuery.of(context).size.height * percentHeight) / 100;
+  }) => (MediaQuery.of(context).size.height * percentHeight) / 100;
+
+  static double getRadius({
+    required double radius,
+    required BuildContext context,
+  }) => (MediaQuery.of(context).size.width * radius) / figmaWidth;
+
+  static double getHorizontalPadding({
+    required double horizontalPadding,
+    required BuildContext context,
+  }) => getWidth(widgetWidth: horizontalPadding, context: context);
+
+  static double getVerticalPadding({
+    required double verticalPadding,
+    required BuildContext context,
+  }) => getHeight(widgetHeight: verticalPadding, context: context);
 }

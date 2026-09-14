@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nextask/core/navigation/routes.dart';
-import 'package:nextask/core/styles/assets_manager.dart';
+import 'package:nextask/core/shared/widgets/app_logo_widget.dart';
 import 'package:nextask/core/styles/colors_manager.dart';
-import 'package:nextask/core/utils/units.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -25,13 +23,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.whiteColor,
-      body: Center(
-        child: SvgPicture.asset(
-          AssetsManager.appLogoIcon,
-          height: Units.getHeight(widgetHeight: 200, context: context),
-          width: Units.getWidth(widgetWidth: 200, context: context),
-        ),
-      ),
+      body: const AppLogoWidget(),
     );
   }
 
