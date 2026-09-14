@@ -11,6 +11,7 @@ class AssetsManager {
   static const onboardingOneImage = '${imagesPath}onboarding_one_image.png';
   static const onboardingTwoImage = '${imagesPath}onboarding_two_image.png';
   static const onboardingThreeImage = '${imagesPath}onboarding_three_image.png';
+  static const onboardingFourImage = '${imagesPath}onboarding_four_image.png';
 
 }
 

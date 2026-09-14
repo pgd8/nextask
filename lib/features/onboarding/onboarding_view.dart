@@ -48,8 +48,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             colorFilter: .mode(ColorsManager.primaryDarkColor, .srcIn),
           ),
           onPressed: () {
-            if (_pageController.page == 2) {
-              print('Navigate to next screen');
+            if (_pageController.page == 3) {
               context.go(Routes.kLoginView);
             } else {
               _pageController.nextPage(
@@ -74,7 +73,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               height: Units.getPercentHeight(percentHeight: 20, context: context),
               child: SmoothPageIndicator(
                 controller: _pageController, // PageController
-                count: 3,
+                count: _buildOnboardingPages().length,
                 effect: WormEffect(
                   activeDotColor: ColorsManager.whiteColor,
                   dotHeight: Units.getHeight(widgetHeight: 10, context: context),
@@ -103,6 +102,10 @@ class _OnboardingViewState extends State<OnboardingView> {
       OnboardingTab(
         imagePath: AssetsManager.onboardingThreeImage,
         description: 'Stay Productive',
+      ),
+      OnboardingTab(
+        imagePath: AssetsManager.onboardingFourImage,
+        description: 'You informations are \nsecure with us',
       ),
     ];
   }

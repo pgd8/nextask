@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextask/core/utils/constants.dart';
 
 class LoginView extends StatelessWidget {
   static const routeName = '/login-view';
@@ -6,6 +7,11 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+      decoration: Constants.boxDecorationLinearGradiantPrimaryAndDarkColors,
+      child: Scaffold(
+        
+      ),
+    );
   }
 }
