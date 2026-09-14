@@ -1,9 +1,10 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:nextask/core/shared/widgets/custom_main_button.dart';
+import 'package:nextask/core/shared/widgets/custom_main_text_button.dart';
 import 'package:nextask/core/shared/widgets/text_input_field.dart';
 import 'package:nextask/core/styles/assets_manager.dart';
+import 'package:nextask/core/styles/text_styles.dart';
 import 'package:nextask/core/utils/units.dart';
 import 'package:nextask/core/utils/validators.dart';
 
@@ -60,6 +61,13 @@ class _LgoinFormState extends State<LgoinForm> {
             iconPath: AssetsManager.lockIcon,
             validator: Validators.passwordValidator,
           ),
+          Container(
+            alignment: .centerEnd,
+            child: CustomMainTextButton(
+              btnTitle: 'Forgot password?',
+              onTap: () {},
+            ),
+          ),
           CustomMainButton(
             onTap: () {
               if (_formKey.currentState!.validate()) {
@@ -67,6 +75,20 @@ class _LgoinFormState extends State<LgoinForm> {
               }
             },
             btnTitle: 'Sign in',
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Don\'t have an account? ',
+                  style: TextStyles.textStyleWhiteR14(context),
+                ),
+                TextSpan(
+                  text: 'Sign up',
+                  style: TextStyles.textStylePrimaryLightColorB14(context),
+                ),
+              ],
+            ),
           ),
         ],
       ),

@@ -3,6 +3,12 @@ import 'package:nextask/core/styles/colors_manager.dart';
 import 'package:nextask/core/utils/units.dart';
 
 class TextStyles {
+  static TextStyle textStyleWhiteR14(BuildContext context) => TextStyle(
+    color: ColorsManager.whiteColor,
+    fontWeight: .w400,
+    fontSize: Units.getFontSize(fontSize: 14, context: context),
+  );
+
   static TextStyle textStyleWhiteR36(BuildContext context) => TextStyle(
     color: ColorsManager.whiteColor,
     fontSize: Units.getFontSize(fontSize: 36, context: context),
@@ -31,4 +37,11 @@ class TextStyles {
     fontWeight: .bold,
     fontSize: Units.getFontSize(fontSize: 25, context: context),
   );
+
+  static TextStyle textStylePrimaryLightColorB14(BuildContext context) =>
+      TextStyle(
+        color: ColorsManager.primaryLightColor,
+        fontSize: Units.getFontSize(fontSize: 14, context: context),
+        fontWeight: .bold,
+      );
 }

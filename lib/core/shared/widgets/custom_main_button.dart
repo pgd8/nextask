@@ -57,7 +57,9 @@ class CustomMainButton extends StatelessWidget {
                     btnTitle,
                     style: TextStyle(
                       color: btnTitleColor ?? ColorsManager.whiteColor,
-                      fontSize: btnTitleSize ?? 18,
+                      fontSize:
+                          btnTitleSize ??
+                          Units.getFontSize(fontSize: 18, context: context),
                       fontWeight: btnTitleFontWeight ?? .w500,
                     ),
                   ),
