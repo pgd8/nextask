@@ -7,19 +7,22 @@ import 'package:nextask/core/styles/assets_manager.dart';
 import 'package:nextask/core/utils/units.dart';
 import 'package:nextask/core/utils/validators.dart';
 
-class LgoinForm extends StatefulWidget {
-  const LgoinForm({super.key});
+class SignupForm extends StatefulWidget {
+  const SignupForm({super.key});
 
   @override
-  State<LgoinForm> createState() => _LgoinFormState();
+  State<SignupForm> createState() => _SignupFormState();
 }
 
-class _LgoinFormState extends State<LgoinForm> {
+class _SignupFormState extends State<SignupForm> {
+  late TextEditingController _fullNameController;
+
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
+    _fullNameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     super.initState();
@@ -27,6 +30,7 @@ class _LgoinFormState extends State<LgoinForm> {
 
   @override
   void dispose() {
+    _fullNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -42,6 +46,12 @@ class _LgoinFormState extends State<LgoinForm> {
           context: context,
         ),
         children: [
+          TextInputField(
+            controller: _fullNameController,
+            hintText: 'Full Name',
+            validator: Validators.fullNameValidator,
+            iconPath: AssetsManager.userIcon,
+          ),
           TextInputField(
             controller: _emailController,
             hintText: 'E-mail',
@@ -75,7 +85,6 @@ class _LgoinFormState extends State<LgoinForm> {
             },
             btnTitle: 'Sign in',
           ),
-          
         ],
       ),
     );

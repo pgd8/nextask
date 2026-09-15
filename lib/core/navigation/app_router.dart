@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nextask/core/navigation/routes.dart';
 import 'package:nextask/features/login/login_view.dart';
 import 'package:nextask/features/onboarding/onboarding_view.dart';
+import 'package:nextask/features/signup/signup_view.dart';
 import 'package:nextask/features/splash/splash_view.dart';
 
 class AppRouter {
@@ -21,5 +22,10 @@ class AppRouter {
 
     //login view
     GoRoute(path: Routes.kLoginView, builder: (context, state) => LoginView()),
+    //signup view
+    GoRoute(
+      path: Routes.kSignupView,
+      builder: (context, state) => const SignupView(),
+    ),
   ];
 }

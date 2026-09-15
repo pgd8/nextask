@@ -10,6 +10,7 @@ class AssetsManager {
   static const lockIcon = '${iconsPath}lock_icon.svg';
   static const eyeIcon = '${iconsPath}eye_icon.svg';
   static const eyeOffIcon = '${iconsPath}eye_off_icon.svg';
+  static const userIcon = '${iconsPath}user_icon.svg';
 
   //images
   static const onboardingOneImage = '${imagesPath}onboarding_one_image.png';

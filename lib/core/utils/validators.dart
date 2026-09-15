@@ -1,6 +1,18 @@
 import 'package:email_validator/email_validator.dart';
 
 class Validators {
+  static String? fullNameValidator(String? name) {
+    if (name == null || name.isEmpty) {
+      return 'Full name is required';
+    }
+
+    if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(name)) {
+      return 'Full name can only contain letters and spaces';
+    }
+
+    return null;
+  }
+
   static String? emailValidator(String? email) {
     if (email == null || email.isEmpty) {
       return 'Email is required';

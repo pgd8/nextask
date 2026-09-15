@@ -1,15 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nextask/core/forms/lgoin_form.dart';
+import 'package:nextask/core/forms/signup_form.dart';
 import 'package:nextask/core/navigation/routes.dart';
 import 'package:nextask/core/shared/widgets/app_logo_widget.dart';
 import 'package:nextask/core/styles/text_styles.dart';
 import 'package:nextask/core/utils/constants.dart';
 import 'package:nextask/core/utils/units.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignupView extends StatelessWidget {
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class LoginView extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Welcome Back To ',
+                      text: 'Welcome To ',
                       style: TextStyles.textStyleWhiteM25(context),
                     ),
                     TextSpan(
@@ -46,10 +46,10 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               Text(
-                'Have an other productive day !',
+                'create an account and Join us now!!',
                 style: TextStyles.textStyleWhiteM18(context),
               ),
-              LgoinForm(),
+              SignupForm(),
               Center(
                 child: RichText(
                   text: TextSpan(
@@ -62,7 +62,7 @@ class LoginView extends StatelessWidget {
                         text: 'Sign up',
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            context.go(Routes.kSignupView);
+                            context.go(Routes.kLoginView);
                           },
                         style: TextStyles.textStylePrimaryLightColorB14(
                           context,
