@@ -1,5 +1,6 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nextask/core/navigation/routes.dart';
 import 'package:nextask/core/shared/widgets/custom_main_button.dart';
 import 'package:nextask/core/shared/widgets/custom_main_text_button.dart';
 import 'package:nextask/core/shared/widgets/text_input_field.dart';
@@ -70,12 +71,11 @@ class _LgoinFormState extends State<LgoinForm> {
           CustomMainButton(
             onTap: () {
               if (_formKey.currentState!.validate()) {
-                log('login button Clicked!!');
+                context.go(Routes.kHomeView);
               }
             },
             btnTitle: 'Sign in',
           ),
-          
         ],
       ),
     );

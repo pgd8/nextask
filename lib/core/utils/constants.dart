@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nextask/core/styles/colors_manager.dart';
+import 'package:nextask/core/utils/units.dart';
 
 class Constants {
+  //appbar size
+  static Size getAppBarSize(BuildContext context) =>
+      Size(.infinity, Units.getHeight(widgetHeight: 100, context: context));
   //boxDecorations
   static BoxDecoration boxDecorationLinearGradiantPrimaryAndDarkColors =
       BoxDecoration(
@@ -11,6 +15,4 @@ class Constants {
           end: .bottomCenter,
         ),
       );
-
-
 }

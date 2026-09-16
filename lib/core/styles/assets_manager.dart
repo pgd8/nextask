@@ -11,6 +11,14 @@ class AssetsManager {
   static const eyeIcon = '${iconsPath}eye_icon.svg';
   static const eyeOffIcon = '${iconsPath}eye_off_icon.svg';
   static const userIcon = '${iconsPath}user_icon.svg';
+  static const flagIcon = '${iconsPath}flag_icon.svg';
+  static const homeOutlineIcon = '${iconsPath}home_outlined_icon.svg';
+  static const universityIcon = '${iconsPath}university_icon.svg';
+  static const briefcaseIcon = '${iconsPath}briefcase_icon.svg';
+  static const addIcon = '${iconsPath}add_icon.svg';
+  static const calendarIcon = '${iconsPath}calendar_icon.svg';
+  static const timeIcon = '${iconsPath}time_icon.svg';
+  static const categoryIcon = '${iconsPath}category_icon.svg';
 
   //images
   static const onboardingOneImage = '${imagesPath}onboarding_one_image.png';

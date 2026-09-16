@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Units {
-  static const figmaHeight = 731;
-  static const figmaWidth = 411;
+
+  static const double figmaHeight = 731;
+  static const double figmaWidth = 411;
 
   static double getHeight({
     required double widgetHeight,
@@ -23,6 +24,11 @@ class Units {
     required double percentHeight,
     required BuildContext context,
   }) => (MediaQuery.of(context).size.height * percentHeight) / 100;
+
+  static double getPercentWidth({
+    required double percentWidth,
+    required BuildContext context,
+  }) => (MediaQuery.of(context).size.width * percentWidth) / 100;
 
   static double getRadius({
     required double radius,

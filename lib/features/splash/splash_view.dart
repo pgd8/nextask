@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
 
   void routeToOnboarding() {
     Future.delayed(Duration(seconds: 3), () {
-      context.go(Routes.kOnboardingView);
+      context.go(Routes.kHomeView);
     });
   }
 }

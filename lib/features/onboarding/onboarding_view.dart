@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nextask/core/navigation/routes.dart';
@@ -33,6 +34,12 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: ColorsManager.primaryColor,
+        statusBarIconBrightness: .light,
+      ),
+    );
     return Container(
       decoration: Constants.boxDecorationLinearGradiantPrimaryAndDarkColors,
       child: Scaffold(
@@ -70,13 +77,19 @@ class _OnboardingViewState extends State<OnboardingView> {
               ),
             ),
             SizedBox(
-              height: Units.getPercentHeight(percentHeight: 20, context: context),
+              height: Units.getPercentHeight(
+                percentHeight: 20,
+                context: context,
+              ),
               child: SmoothPageIndicator(
                 controller: _pageController, // PageController
                 count: _buildOnboardingPages().length,
                 effect: WormEffect(
                   activeDotColor: ColorsManager.whiteColor,
-                  dotHeight: Units.getHeight(widgetHeight: 10, context: context),
+                  dotHeight: Units.getHeight(
+                    widgetHeight: 10,
+                    context: context,
+                  ),
                   dotWidth: Units.getWidth(widgetWidth: 10, context: context),
                   type: WormType.normal,
                   // strokeWidth: 5,

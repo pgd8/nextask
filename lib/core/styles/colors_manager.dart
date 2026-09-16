@@ -5,6 +5,12 @@ class ColorsManager {
   static Color whiteColor = Color(0xffFFFFFF);
   static Color blackColor = Color(0xff000000);
   static Color transparentColor = Colors.transparent;
+  //neutral color
+  static Color neutralPrimaryColor = Color(0xff1B1C1F);
+  static Color neutralSecondaryColor = Color(0xff767E8C);
+  static Color neutralGhostColor = Color(0xffA9B0C5);
+  static Color neutralLineColor = Color(0xffE0E5ED);
+  static Color neutralBackgroundColor = Color(0xffF6F7F9);
   //primaryColor
   static Color primaryLightColor = Color(0xff0EA5E9);
   static Color primaryColor = Color(0xff1253AA);
