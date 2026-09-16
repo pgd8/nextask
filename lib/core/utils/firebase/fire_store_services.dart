@@ -3,20 +3,24 @@ import 'package:nextask/core/data/models/task_model.dart';
 import 'package:nextask/core/utils/constants.dart';
 
 class FireStoreServices {
-
   static final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   final collection = firestore.collection(Constants.tasksCollection);
 
-  //CRUD => C - create  , R - read , U - update , D - delete 
+  //CRUD => C - create  , R - read , U - update , D - delete
 
-  //create 
-  void createTask({
-    required TaskModel task
-  }){
+  //create
+  void createTask({required TaskModel task}) {
     var docRef = collection.doc();
     task.id = docRef.id;
     docRef.set(task.toFireStore());
   }
 
+  //read
+  Future<List<TaskModel>> readTasks() async {
+    final snapshot = await collection.get();
+    return snapshot.docs
+        .map((doc) => TaskModel.fromFireStore(doc.data()))
+        .toList();
+  }
 }

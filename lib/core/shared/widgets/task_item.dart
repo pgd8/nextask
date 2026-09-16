@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nextask/core/data/models/task_model.dart';
 import 'package:nextask/core/styles/assets_manager.dart';
 import 'package:nextask/core/styles/colors_manager.dart';
 import 'package:nextask/core/styles/text_styles.dart';
 import 'package:nextask/core/utils/units.dart';
 
 class TaskItem extends StatefulWidget {
-  const TaskItem({super.key});
+  final TaskModel task;
+  const TaskItem({super.key, required this.task});
 
   @override
   State<TaskItem> createState() => _TaskItemState();
@@ -53,11 +55,11 @@ class _TaskItemState extends State<TaskItem> {
                   crossAxisAlignment: .start,
                   children: [
                     Text(
-                      'Task Title',
+                      widget.task.title,
                       style: TextStyles.textStyleBlackM15(context),
                     ),
                     Text(
-                      'Task Decription',
+                      widget.task.description,
                       style: TextStyles.textStyleBlackR9(context),
                     ),
                   ],
