@@ -3,6 +3,8 @@ import 'package:nextask/core/styles/colors_manager.dart';
 import 'package:nextask/core/utils/units.dart';
 
 class Constants {
+  //collections
+  static const tasksCollection = 'tasks';
   //appbar size
   static Size getAppBarSize(BuildContext context) =>
       Size(.infinity, Units.getHeight(widgetHeight: 100, context: context));

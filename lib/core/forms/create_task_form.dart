@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nextask/core/data/models/task_model.dart';
 import 'package:nextask/core/shared/widgets/custom_main_button.dart';
 import 'package:nextask/core/shared/widgets/date_time_selector.dart';
+import 'package:nextask/core/utils/firebase/fire_store_services.dart';
 import 'package:nextask/features/home/tabs/home_tab/widgets/piriority_category_selector.dart';
 import 'package:nextask/core/shared/widgets/text_input_field.dart';
 import 'package:nextask/core/utils/units.dart';
@@ -16,6 +18,7 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
   final _formKey = GlobalKey<FormState>();
+  FireStoreServices fireStoreServices = FireStoreServices();
   @override
   void initState() {
     _titleController = TextEditingController();
@@ -45,7 +48,7 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
           ),
           Text('Description'),
           TextInputField(
-            controller: _titleController,
+            controller: _descriptionController,
             hintText: 'Ex: present the new project',
           ),
           SizedBox(
@@ -80,7 +83,20 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
               context: context,
             ),
           ),
-          CustomMainButton(btnTitle: 'Create Task', onTap: () {}),
+          CustomMainButton(
+            btnTitle: 'Create Task',
+            onTap: () {
+              fireStoreServices.createTask(
+                task: TaskModel(
+                  title: _titleController.text,
+                  description: _descriptionController.text,
+                  dateTime: DateTime.now().toString(),
+                  category: 'Home',
+                  piriority: 1,
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
