@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nextask/core/data/models/task_model.dart';
 import 'package:nextask/core/forms/create_task_form.dart';
@@ -9,6 +10,8 @@ import 'package:nextask/core/styles/colors_manager.dart';
 import 'package:nextask/core/utils/constants.dart';
 import 'package:nextask/core/utils/firebase/fire_store_services.dart';
 import 'package:nextask/core/utils/units.dart';
+import 'package:nextask/features/home/presentaion/manager/home_cubit.dart';
+import 'package:nextask/features/home/presentaion/manager/home_state.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -22,9 +25,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    fireStoreServices.readTasks();
+    context.read<HomeCubit>().readTasks();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,30 +82,53 @@ class _HomeViewState extends State<HomeView> {
             context: context,
           ),
         ),
-        child: FutureBuilder<List<TaskModel>>(
-          future: fireStoreServices.readTasks(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+
+        child: BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (previous, current) => (
+          current is LoadingGetTasksState ||
+              current is SuccessGetTasksState ||
+              current is FailureGetTasksState
+          ),
+
+          builder: (context, state) {
+            if(state is LoadingGetTasksState){
+              return Center(child: CircularProgressIndicator(),);
             }
 
-            if (snapshot.hasError) {
-              print(snapshot.error.toString());
-              return Center(child: Text('something went wrong'));
+            if(state is FailureGetTasksState){
+              return Center(child: Text(state.errorMessage),);
             }
 
-            if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(child: Text('No Tasks yet'));
+            if(state is SuccessGetTasksState){
+              return StreamBuilder<List<TaskModel>>(
+                stream: fireStoreServices.readTasks(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+
+                  if (snapshot.hasError) {
+                    print(snapshot.error.toString());
+                    return Center(child: Text('something went wrong'));
+                  }
+
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(child: Text('No Tasks yet'));
+                  }
+
+                  final tasks = snapshot.data ?? [];
+                  return ListView.separated(
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: Units.getHeight(widgetHeight: 10, context: context),
+                    ),
+                    itemBuilder: (context, index) => TaskItem(task: tasks[index]),
+                    itemCount: tasks.length,
+                  );
+                },
+              );
             }
 
-            final tasks = snapshot.data ?? [];
-            return ListView.separated(
-              separatorBuilder: (context, index) => SizedBox(height: Units.getHeight(widgetHeight: 10, context: context),),
-              itemBuilder: (context, index) => TaskItem(
-                task: tasks[index],
-              ),
-              itemCount: tasks.length,
-            );
+            return Container();
           },
         ),
       ),

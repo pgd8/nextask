@@ -17,10 +17,11 @@ class FireStoreServices {
   }
 
   //read
-  Future<List<TaskModel>> readTasks() async {
-    final snapshot = await collection.get();
-    return snapshot.docs
-        .map((doc) => TaskModel.fromFireStore(doc.data()))
-        .toList();
+  Stream<List<TaskModel>> readTasks() {
+    return collection.snapshots().map(
+      (snapshot) => snapshot.docs
+          .map((doc) => TaskModel.fromFireStore(doc.data()))
+          .toList(),
+    );
   }
 }
